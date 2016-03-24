@@ -1,0 +1,14 @@
+h2{
+color:#337ab7;
+margin-bottom:20px;
+}
+
+#submitForm label, #searchForm label{
+    display:block;
+}
+.phide{
+    visibility:hidden;
+}
+#addSuccess, #deleteSuccess{
+  display:none;
+}

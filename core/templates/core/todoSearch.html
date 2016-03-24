@@ -1,0 +1,39 @@
+
+{% if todos %}
+
+    <div id = "clsearch" class="alert alert-info">
+
+
+            Showing results for&nbsp;&nbsp;"<b>{{query}}</b>"
+
+
+        <button class="btn bg-warning" type="submit" onclick="resetSearch()" style="margin-left:2em;">Reset</a>
+        <div class="clear"></div>
+    </div>
+    <table class="table table-bordered table-hover" id="todoTable">
+    <tr>
+        <th>Url</th><th>Todo Text</th><th colspan="2">Tags</th>
+    </tr>
+    {% for todo in todos %}
+
+        <tr id="todo-{{todo.id}}">
+        <td><b>{{todo.url}}</b></td>
+        <td><b>{{todo.detail}}</b></td>
+        <td>
+        {% for tag in todo.tags.all %}
+            <a href="/todo/?query={{tag}}" class="label label-info">{{tag}}</a>
+        {%endfor%}
+        </td>
+        <td><button onclick="deleteTodo('{{todo.id}}');" class="btn">Delete</button></td>
+      </tr>
+
+    {% endfor %}
+    </table>
+
+{% else %}
+
+    <div class="alert alert-warning">
+        No tags or urls found for "<b>{{query}}</b>"
+    </div>
+
+{% endif %}

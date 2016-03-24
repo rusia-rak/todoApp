@@ -1,0 +1,11 @@
+
+<tr id="todo-{{todo.id}}" style="display: none">
+    <td><b>{{todo.url}}</b></td>
+    <td>{{todo.detail}}</td>
+    <td>
+    {% for tag in todo.tags.all %}
+       <a href="/tags/{{tag}}/" class="label label-info">{{tag}}</a>
+    {%endfor%}
+    </td>
+    <td><button onclick="deleteTodo('{{todo.id}}');" class="btn">Delete</button></td>
+</tr>
