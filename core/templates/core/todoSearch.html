@@ -2,13 +2,8 @@
 {% if todos %}
 
     <div id = "clsearch" class="alert alert-info">
-
-
-            Showing results for&nbsp;&nbsp;"<b>{{query}}</b>"
-
-
-        <button class="btn bg-warning" type="submit" onclick="resetSearch()" style="margin-left:2em;">Reset</a>
-        <div class="clear"></div>
+        Showing results for&nbsp;&nbsp;"<b>{{query}}</b>"
+        <button class="btn bg-warning" type="submit" onclick="resetSearch()" style="margin-left:2em;">Reset</button>
     </div>
     <table class="table table-bordered table-hover" id="todoTable">
     <tr>
@@ -21,7 +16,7 @@
         <td><b>{{todo.detail}}</b></td>
         <td>
         {% for tag in todo.tags.all %}
-            <a href="/todo/?query={{tag}}" class="label label-info">{{tag}}</a>
+            <a onclick="tagSearch(this)" class="label label-info">{{tag}}</a>
         {%endfor%}
         </td>
         <td><button onclick="deleteTodo('{{todo.id}}');" class="btn">Delete</button></td>
@@ -32,8 +27,9 @@
 
 {% else %}
 
-    <div class="alert alert-warning">
+    <div class="alert alert-info">
         No tags or urls found for "<b>{{query}}</b>"
+        <button class="btn bg-warning" type="submit" onclick="resetSearch()" style="margin-left:2em;">Reset</button>
     </div>
 
 {% endif %}

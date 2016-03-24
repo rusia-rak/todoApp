@@ -66,26 +66,33 @@
             <div id="addSuccess" class="alert alert-success"><strong><p class="text-center">Todo Added</p></strong></div>
             <div id="deleteSuccess" class="alert alert-success"><strong><p class="text-center">Todo Deleted</p></strong></div>
             <div id="main">
-                <table class="table table-bordered table-hover" id="todoTable">
-                <tr>
-                    <th>Url</th><th>Todo Text</th><th colspan="2">Tags</th>
-                </tr>
-                {% for todo in todos %}
+                {% if todos %}
 
-                    <tr id="todo-{{todo.id}}">
-                    <td><b>{{todo.url}}</b></td>
-                    <td><b>{{todo.detail}}</b></td>
-                    <td>
-                    {% for tag in todo.tags.all %}
-                        <a href="/todo/?query={{tag}}" class="label label-info">{{tag}}</a>
-                    {%endfor%}
-                    </td>
-                    <td><button onclick="deleteTodo('{{todo.id}}');" class="btn">Delete</button></td>
-                  </tr>
+                    <table class="table table-bordered table-hover" id="todoTable">
+                    <tr>
+                        <th>Url</th><th>Todo Text</th><th colspan="2">Tags</th>
+                    </tr>
+                    {% for todo in todos %}
 
-                {% endfor %}
-                </table>
+                        <tr id="todo-{{todo.id}}">
+                        <td><b>{{todo.url}}</b></td>
+                        <td><b>{{todo.detail}}</b></td>
+                        <td>
+                        {% for tag in todo.tags.all %}
+                            <a onclick="tagSearch(this)" class="label label-info">{{tag}}</a>
+                        {%endfor%}
+                        </td>
+                        <td><button onclick="deleteTodo('{{todo.id}}');" class="btn">Delete</button></td>
+                      </tr>
 
+                    {% endfor %}
+                    </table>
+
+                {% else %}
+
+                    <div class="alert alert-info">No Todos in your List, Add one to begin.</div>
+
+                {% endif %}
             </div>
 
         </div>
