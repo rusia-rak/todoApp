@@ -15,7 +15,7 @@ Python Version Used - 3.4.3
 Installation Instructions : - 
 
 - $ pip3 install -r requirements.txt
-- $ python manaeg.py runserver
+- $ python manage.py runserver
 
 Note - Make sure to use right version of python and django to avoid any conflicts and better if using virtual environment.
        
