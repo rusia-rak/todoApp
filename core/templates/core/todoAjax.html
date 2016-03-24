@@ -4,7 +4,7 @@
     <td>{{todo.detail}}</td>
     <td>
     {% for tag in todo.tags.all %}
-       <a href="/tags/{{tag}}/" class="label label-info">{{tag}}</a>
+       <a onclick="tagSearch(this)" class="label label-info">{{tag}}</a>
     {%endfor%}
     </td>
     <td><button onclick="deleteTodo('{{todo.id}}');" class="btn">Delete</button></td>

@@ -27,7 +27,13 @@ function deleteTodo(todo){
                     $("#todo-"+ todo).fadeOut(500);
                     setTimeout(function(){$("#todo-" + todo).remove()
                     if ($('table tbody tr').length < 2 ){
-                        $('#clsearch').html('No More Results to show<button class="btn bg-warning" type="submit" onclick="resetSearch()" style="margin-left:2em;">Reset</a><div class="clear"></div>');
+                        if($('#clsearch').length > 0){
+                            $('#main').html('<div class="alert alert-info"> No More Search Results to show   <button class="btn bg-warning" type="submit" onclick="resetSearch()" style="margin-left:2em;">Reset</button></div>');
+                        }
+                        else{
+                            $('#main').html('<div class="alert alert-info">No Todos in your List, Add one to begin.</div>');
+                        }
+
                     }
 
                     $('#deleteSuccess').show();
@@ -51,14 +57,11 @@ function appendTodo(todoId){
         url:"/todo/appendTodo/" + todoId + "/",
         success: function(result){
 
-            if ($('#clsearch').length == 0){
-
+                resetSearch();
                 $("#todoTable tbody").append(result);
                 $("#todo-"+todoId).fadeIn(500);
-
-            }
-            $('#addSuccess').fadeIn(500);
-            setTimeout(function(){$('#addSuccess').fadeOut(1000);}, 2000);
+                $('#addSuccess').fadeIn(500);
+                setTimeout(function(){$('#addSuccess').fadeOut(1000);}, 2000);
 
         }
     });
