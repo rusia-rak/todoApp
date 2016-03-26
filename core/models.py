@@ -3,7 +3,7 @@ from taggit.managers import TaggableManager
 
 class Todo(models.Model):
     url = models.CharField(max_length=200, default='')
-    detail = models.CharField(max_length=500, default='')
+    detail = models.CharField(max_length=500, default=' ')
     tags = TaggableManager()
 
     def __str__(self):
